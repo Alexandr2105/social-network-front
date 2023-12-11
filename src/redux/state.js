@@ -1,4 +1,4 @@
-import {renderApp} from "../render";
+let renderApp;
 
 const state = {
     dialogsPage: {
@@ -102,6 +102,10 @@ export const updateTextNewPost = (newText) => {
 export const updateTextNewMessage = (newText) => {
     state.dialogsPage.updateNewMessage = newText;
     renderApp(state);
+}
+
+export const subscribe = (observer) => {
+    renderApp = observer;
 }
 
 export default state;
