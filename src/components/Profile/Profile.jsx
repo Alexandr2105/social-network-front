@@ -8,7 +8,8 @@ const Profile = (props) => {
             <div>
                 <img src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" alt="nature"/>
             </div>
-            <MyPosts posts={props.state.posts}/>
+            <MyPosts posts={props.profilePage.posts} addPost={props.addPost}
+                     updateNewPost={props.profilePage.updateNewPost} updateTextNewPost={props.updateTextNewPost}/>
         </div>
     );
 }
