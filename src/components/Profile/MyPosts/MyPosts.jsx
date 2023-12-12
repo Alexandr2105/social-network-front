@@ -6,14 +6,13 @@ import {addPostActionCreator, updateTextNewPostActionCreator} from "../../../red
 const MyPosts = (props) => {
 
     const post = props.profilePage.posts.map(postData => <Post message={postData.message} likes={postData.likes}/>)
-    const newPostElement = React.createRef();
 
     const createPost = () => {
         props.distpatch(addPostActionCreator());
     }
 
-    const onChangePost = () => {
-        const text = newPostElement.current.value;
+    const onChangePost = (e) => {
+        const text = e.target.value;
         props.distpatch(updateTextNewPostActionCreator(text));
     }
 
@@ -21,7 +20,7 @@ const MyPosts = (props) => {
         <div className={module.posts}>
             <div>
                 <p>My posts</p>
-                <textarea onChange={onChangePost} ref={newPostElement} value={props.profilePage.updateNewPost}/>
+                <textarea onChange={onChangePost} placeholder="Введите текст" value={props.profilePage.updateNewPost}/>
                 <button onClick={createPost}>Send</button>
             </div>
             <div className={module.posts}>
