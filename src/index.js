@@ -7,7 +7,7 @@ import {BrowserRouter} from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-export const renderApp = (state) => {
+const renderApp = (state) => {
     root.render(
         <BrowserRouter>
             <App state={state} dispatch={store.dispatch.bind(store)}/>
