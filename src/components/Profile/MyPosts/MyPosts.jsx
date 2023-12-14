@@ -8,12 +8,12 @@ const MyPosts = (props) => {
     const post = props.profilePage.posts.map(postData => <Post message={postData.message} likes={postData.likes}/>)
 
     const createPost = () => {
-        props.distpatch(addPostActionCreator());
+        props.dispatch(addPostActionCreator());
     }
 
     const onChangePost = (e) => {
         const text = e.target.value;
-        props.distpatch(updateTextNewPostActionCreator(text));
+        props.dispatch(updateTextNewPostActionCreator(text));
     }
 
     return (
