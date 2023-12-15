@@ -1,9 +1,29 @@
-const ADD_POST_ACTION_TYPE = "ADD_POST_ACTION_TYPE";
-const UPDATE_TEXT_NEW_POST_ACTION_TYPE = "UPDATE_TEXT_NEW_POST_ACTION_TYPE";
+import {createSlice} from "@reduxjs/toolkit";
 
-const profileReducer = (state, action) => {
-    switch (action.type) {
-        case ADD_POST_ACTION_TYPE:
+const initialState = {
+    posts: [
+        {
+            id: 1,
+            message: "Hi, my name is Alex.",
+            likes: "20"
+        }, {
+            id: 2,
+            message: "What is you name?",
+            likes: 10
+        }, {
+            id: 3,
+            message: "How are you?",
+            likes: 99
+        }
+    ],
+    updateNewPost: "",
+};
+
+const profileReducer = createSlice({
+    name: "profile",
+    initialState: initialState,
+    reducers: {
+        addPost(state, action) {
             const newPost = {
                 id: 4,
                 message: state.updateNewPost,
@@ -11,16 +31,12 @@ const profileReducer = (state, action) => {
             }
             state.posts.push(newPost);
             state.updateNewPost = "";
-            return state;
-        case UPDATE_TEXT_NEW_POST_ACTION_TYPE:
-            state.updateNewPost = action.newText;
-            return state;
-        default :
-            return state;
+        },
+        updateTextNewPost(state, action) {
+            state.updateNewPost = action.payload;
+        }
     }
-}
+})
 
-export const addPostActionCreator = () => ({type: ADD_POST_ACTION_TYPE});
-export const updateTextNewPostActionCreator = (text) => ({type: UPDATE_TEXT_NEW_POST_ACTION_TYPE, newText: text});
-
-export default profileReducer;
+export const {addPost, updateTextNewPost} = profileReducer.actions;
+export default profileReducer.reducer;

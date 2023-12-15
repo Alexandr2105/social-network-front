@@ -17,7 +17,7 @@ const App = (props) => {
                 <Header/>
                 <div className="nav">
                     <NavBar/>
-                    <Sidebar state={props.state.sidebar}/>
+                    <Sidebar reducerPage={props.state.reducerPage}/>
                 </div>
                 <div className="app-wrapper-content">
                     <Routes>
@@ -28,7 +28,7 @@ const App = (props) => {
                         <Route path="news" element={<News/>}/>
                         <Route path="music" element={<Music/>}/>
                         <Route path="settings" element={<Settings/>}/>
-                        <Route path="friends" element={<Friends state={props.state.sidebar}/>}/>
+                        <Route path="friends" element={<Friends reducerPage={props.state.reducerPage}/>}/>
                     </Routes>
                 </div>
             </div>

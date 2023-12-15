@@ -2,7 +2,7 @@ import {NavLink} from "react-router-dom";
 import mod from "./Sidebar.module.css"
 
 const Sidebar = (props) => {
-    const navbar = props.state.map(value =>
+    const navbar = props.reducerPage.sidebar.map(value =>
         <div className={mod.item}>
             <img src={value.avatar} alt="avatar"/>
             <p>{value.name}</p>
